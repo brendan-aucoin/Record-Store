@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <meta name = "author" content = "Brendan Aucoin">
+        <meta name="description" content="Product">
+        <meta charset="UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <title>Product Page</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="/css/modal_styles.css">
+        <link rel="stylesheet" href="/css/product_page_styles.css">
+        <link rel="stylesheet" href="/css/product_styles.css">
+        <!-- scripts -->
+        <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer src = "/scripts/product_page_script.js"></script>
+        <script defer src = "/scripts/modal_script.js"></script>
+        <script defer src = "/scripts/product_script.js"></script>
+    </head>
+    <body>
+        <!-- include the header and the nav -->
+        <%-include('partials/header.ejs') %>
+        <%-include('partials/nav.ejs') %>
+        <%-include('partials/product_grid.ejs') %>
+          <!-- where the product actually goes -->
+          <div class="flex-wrapper">
+              <!-- the left image container -->
+            <div class="image-container">
+                <img id = "album-cover-img" src = <%= functions.albumCoverPath(product.name,product.genre,"/../") %> />
+                <div id="modal" class="modal">
+                    <span class="close"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    <img class="modal-content" id="img">
+                    <div id="caption"></div>
+                </div>
+            </div>
+            <!-- the right container where the products information goes -->
+             <div class = "product-info-container">
+                 <!-- basic info -->
+                <p id = "artist"><%=product.artist %></p>
+                <p id = "album-name"><%=product.name %></p>
+                <p id = "stock">Stock: <%=product.stock %></p>
+                <!-- the confirmation once you add it to your cart -->
+                <div id = "added-to-cart-confirmation">
+                    <p>Added <%=product.name %> to your cart. <a href = "/cart">View Cart </a></p>
+                </div>
+                <!-- the price and the add to cart button -->
+                <div class="purchase-container">
+                    <p id = "price">$<%=product.price%></p>
+                    <!-- the button will be grey if there is no stock left -->
+                    <form>
+                        <button type = "submit" id = "add-to-cart-button" class = 
+                            <%
+                            if(product.stock <=0){ %>"disabled-add-to-cart-button" <%}
+                            else{ %> "add-to-cart-button" <% }%>>
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Add to Cart
+                        </button>
+                    </form>
+                </div>
+                <!-- the rest of the basic info -->
+                <p id = "release-date">Release Date: <%= functions.getDateText(product.releaseDate) %></p>
+                <p>TrackListing: </p>
+                <ul class = "tracklisting">
+                    <%product.trackList.forEach((track,index)=>{%>
+                        <li class = "track"><%=index+1%>. <%=track%></li>
+                    <% })%>
+                </ul>
+            </div>
+        </div>
+
+        <!-- the related items -->
+        <div class="related-items">
+            <h2>More by <%=product.artist %></h2>
+            <hr>
+            <div class="product-container product-container-gap-L" > 
+                <%relatedItems.forEach(item=>{ %>
+                    <div class="product" onclick = "clickOnProduct(`<%=item.type %>`,`<%=item.artist%>`,`<%=item.name%>`,`../../`);">
+                        <img src = <%= functions.albumCoverPath(item.name,item.genre,"/../") %> />
+                        <p><%=item.name %></p>
+                        <p><%=item.artist %></p>
+                        <p><%= item.type %></p>
+                        <p>$<%=item.price%></p>
+                    </div>
+                <% }) %>  
+            </div>
+            
+        </div>
+    </body>
+</html>

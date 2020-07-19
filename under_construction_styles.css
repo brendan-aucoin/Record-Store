@@ -1,0 +1,19 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.construction-container{
+    text-align:center;
+    background-color:#C0C0C0;
+    height:100%;
+}
+
+.construction-container i{
+    margin-top:3rem;
+    font-size:4rem;
+}
+.construction-container p{
+    margin-top:3rem;
+    font-size:3rem;
+}

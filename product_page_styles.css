@@ -1,0 +1,128 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.flex-wrapper{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    align-items:flex-start;
+    margin-top:2rem;
+}
+
+.image-container{
+    padding:4rem 4rem;
+    margin-right:4rem;
+    background-color:#fffbfb;
+    border:1px solid rgba(211,211,211,0.2);
+}
+
+.image-container img:hover{
+     opacity:0.9;
+     cursor:pointer;
+}
+
+.product-info-container{
+    padding: 0.5rem 2rem;
+    width:35%;
+    font-size:1.2rem;
+    background-color:#fffbfb;
+    border:1px solid rgba(211,211,211,0.2);
+}
+/* put a margin underneath everything */
+.product-info-container *{
+    margin-bottom:0.5rem;
+}
+#artist{
+    font-size:2.5rem;
+    
+}
+#album-name{
+    font-size:1.7rem;
+}
+
+#stock{
+    margin:1.3rem 0;
+}
+
+.purchase-container{
+    display:flex;
+}
+
+#price{
+    font-size:2rem;
+    margin-right:2.4rem;
+    align-self:center;
+}
+
+.purchase-container button{
+    font-size:1.2rem;
+    padding:0.5rem 1rem;
+    border-radius:0.9rem;
+}
+
+.disabled-add-to-cart-button{
+    background-color:lightgray;
+}
+.disabled-add-to-cart-button:hover{
+    cursor:normal;
+}
+.add-to-cart-button{
+    background-color:#FF3333;
+}
+.add-to-cart-button:hover{
+    cursor:pointer;
+    background-color:#f14747;
+}
+.add-to-cart-button i{
+    margin-right:0.6rem;
+    color:white;
+}
+
+#release-date{
+    margin-top:1.2rem;
+    margin-bottom:1.4rem;
+}
+
+.tracklisting{
+    list-style: none;
+    margin-left:1rem;
+}
+
+#added-to-cart-confirmation{
+    margin-top:1rem;
+    margin-bottom:1rem;
+    padding:1rem 0;
+    background-color:#aff5af;
+    display:none;
+}
+
+#added-to-cart-confirmation a{
+    text-decoration: none;
+    color:black;
+}
+#added-to-cart-confirmation a:hover{
+    cursor:pointer;
+    color:blue;
+}
+
+.related-items{
+    width:90%;
+    margin: 4rem auto;
+}
+
+
+@media(max-width:780px){
+
+    .flex-wrapper{
+       flex-direction:column;
+       justify-content:stretch;
+    }
+    .product-info-container{
+        width:100%;
+    }
+    #added-to-cart-confirmation{
+        margin-left:0;
+    }
+}

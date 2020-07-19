@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta name = "author" content = "Brendan Aucoin">
+        <meta name="description" content="Record Store band list">
+        <meta charset="UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <title>Bands</title>
+        <!-- styles -->
+        <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/bands_styles.css">
+        <!-- scripts -->
+        <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer src = "/scripts/bands_script.js"></script>
+    </head>
+    <body>
+        <%- include('partials/header.ejs')%>
+        <%- include('partials/nav.ejs')%>
+        <div class = "container">
+            <h2 id = "title"> Shop By Band</h2>
+            <hr>
+            <div class="letter-nav">
+                <%alpha.forEach((letter,index)=>{%>
+                    <p class = "letter-link"><%=letter.toUpperCase()%></p>
+                    <span><%if(index!==alpha.length-1){%>|<%}%></span>
+                <% })%>
+            </div>  
+            <!-- end of nav division-->
+
+            <div class="band-container">
+                <%alpha.forEach(letter=>{%>
+                    <h3 class = "letter-title"><%=letter.toUpperCase()%></h3>
+                    <div id = <%=letter.toUpperCase() %> class="band-list">
+                        <%bandNames.forEach(item=>{
+                            if(item.charAt(0).toUpperCase() === letter.toUpperCase()){%>
+                                <p class = "band-name"><%=item%></p>  
+                            <% }%>
+                        <%})%>
+                    </div>
+                 <% })%>
+               
+                
+            </div>
+
+        </div>
+        <!-- end of the container -->
+        
+    </body>
+</html>

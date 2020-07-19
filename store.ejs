@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta name = "author" content = "Brendan Aucoin">
+        <meta name="description" content="Record Store shop">
+        <meta charset="UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <title>Brendan's Record Store</title>
+
+        <!-- styles -->
+        <link rel="stylesheet" href="/css/store_styles.css">
+        <link rel="stylesheet" href="/css/product_styles.css">
+        <!-- scripts -->
+        <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer src = "/scripts/store_script.js"></script>
+        <script defer src = "/scripts/product_script.js"></script>
+    </head>
+
+    <body>
+        <!-- you want most pages to include the header (cart,serach button, logo) and the nav (links to other pages) -->
+        <%-include('partials/header.ejs') %>
+        <%- include('partials/nav.ejs') %>
+        <!-- the showcase (the pictures)-->
+        <div id = "showcase"></div>
+        
+        <!-- the grid of products -->
+        <div class="product-wrapper">
+            <h2>Latest Releases</h2>
+            <hr>
+            <div class="product-container product-container-gap-L" >
+                <!-- looping through the data from the data base -->
+                <% data.forEach(product => { %>
+                    <div class="product" onclick = "clickOnProduct(`<%=product.type %>`,`<%=product.artist%>`,`<%=product.name%>`);">
+                        <img src = <%= functions.albumCoverPath(product.name,product.genre) %> />
+                        <p><%= product.name%></p>
+                        <p><%=  product.artist%></p>
+                        <p><%=  product.type%></p>
+                        <p>$<%= product.price  %></p>
+                    </div>
+                 <% }) %>
+            </div>
+        </div>
+        <!-- end of the grid of products -->
+
+        <!-- cart button -->
+        <div class="cart-bottom">
+            <button id = "bottom-cart-button" class = "bottom-cart-button">Cart<i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+        </div>
+    </body>
+</html>

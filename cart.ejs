@@ -1,0 +1,66 @@
+<html>
+    <head>
+        <meta name = "author" content = "Brendan Aucoin">
+        <meta name="description" content="Record Store shopping cart">
+        <meta charset="UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <title>Shopping Cart</title>
+        <!-- styles -->
+        <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/cart_styles.css">
+        <!-- scripts -->
+        <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer src = "/scripts/cart_script.js"></script>
+    </head>
+    <body>
+        <%-include('partials/header.ejs')%>
+        <%-include('partials/nav.ejs')%>
+
+
+        <div class="container">
+            <h1>Shopping Cart</h1>
+            <div class = "table" id = "shopping-cart" class = "shopping-cart">
+                <div class = "tr">
+                    <span class = "th">Item</span>
+                    <span class = "th"></span>
+                    <span class = "th">Quantity</span>
+                    <span class = "th">price</span>
+                    <span class = "th"></span>
+                </div>
+                <%cart.forEach((item,index)=>{%>
+                    <div class = "tr" id = <%=`row${index}` %>>
+                        <span class = "td img-field">  <img src = <%= functions.albumCoverPath(item.content.name,item.content.genre) %> /></span>
+                        
+                        <span class = "td info-field">
+                            <p><span class = "album-name" id = <%=`album-name${index}`%>><%=item.content.name%></span> by <%=item.content.artist %></p>
+                            <span>Stock:</span><span class = "stock"><%=item.content.stock%></span>
+                        </span>
+
+                        <span class = "td quantity-field">
+                            <input class = "quantity-input" 
+                                onchange = "quantityFieldChange(this,`price<%=index %>`,`<%=item.content.price%>`)" 
+                                onkeypress = "return quantityFieldKeyPress(event)" type = "text" value = <%=item.quantity %> 
+                                rowNum = <%= `${index}`%>
+                            />
+                        </span>
+                        
+                        <span class = "td price-field"><span>$</span><span id = <%=`price${index}` %> class = "price"><%=parseFloat(item.content.price * item.quantity).toFixed(2)%></span></span>
+                        
+                        <form rowNum = <%=`${index}`%> method = "POST" class = "remove-item-form td remove-button-field">
+                            <button type = "submit" id = <%= `remove-button-${index}`%> class = "remove-button">
+                                <i class="fa fa-times" aria-hidden="true"></i>Remove
+                            </button>
+                        </form>
+                </div>
+                <% })%>
+            </div>
+
+            </div>
+            <h2 id = total-price>$<%= totalPrice%></h2>
+            <div class="checkout-container">
+                <form method = "GET" action = "/checkout" onsubmit = "return validateCart();">
+                    <button type = "submit" id = "checkout-button">Checkout<i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                </form>
+            </div>
+    </body>
+</html>

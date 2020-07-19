@@ -1,0 +1,147 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.container{
+    width:65%;
+    margin:4rem auto;
+    overflow-x: auto;
+
+}
+
+.container h1{
+    margin-bottom:2rem;
+}
+
+.shopping-cart{
+    margin-top:1rem;
+    border:1px solid black;
+}
+
+DIV.table{
+    display:table;
+    background-color:rgb(241, 235, 235);
+    width:95%;
+    border-collapse:separate; 
+    border-spacing:0 1rem; 
+    padding:0 1rem;
+}
+
+DIV.table .tr:not(:first-child):hover{
+    background-color:#A0A0A0;
+}
+
+FORM.tr, DIV.tr{
+    display:table-row;
+}
+
+SPAN.td,FORM.td{
+    display:table-cell;
+    vertical-align:top;
+}
+
+SPAN.th{
+    text-align:center;
+    display:table-cell;
+    font-size:1.5rem;
+    vertical-align:top;
+}
+
+
+.img-field{
+    text-align:center;
+}
+.img-field img{
+    width:150px;
+    height:150px;
+}
+
+.info-field{
+    padding:1rem 2rem;
+}
+
+.info-field p,.info-field p span{
+    font-size:2rem;
+    margin-bottom:2rem;
+}
+
+.info-field span{
+    font-size:1.2rem;
+}
+
+
+.quantity-field{
+    text-align:center;
+}
+.quantity-input{
+    width:35%;
+    text-align:right;
+    padding:0.5rem 0;
+    font-size:1.2rem;
+    margin-top:0.5rem;
+}
+
+.price-field{
+    text-align:right;
+    font-size:1.3rem;
+    vertical-align:top;
+    padding:0.7rem 1rem;
+}
+
+.remove-button-field{
+    text-align:center;
+}
+
+.remove-button{
+    margin-top:0.5rem;
+    padding:0.3rem 1rem;
+    background-color:#404040;
+    color:white;
+    border-radius:0.5rem;
+    display:flex;
+}
+.remove-button:hover{
+    cursor:pointer;
+    background-color:rgb(50, 50, 50);
+}
+
+.remove-button i{
+    margin-right:0.5rem;
+}
+
+
+.checkout-container, h2#total-price{
+    display:flex;
+    justify-content:flex-end;
+    width:80%;   
+}
+h2#total-price{
+    margin-top:-2rem;
+    margin-bottom:1rem;
+}
+
+#checkout-button{
+    background-color:#CC0000;
+    color:#f8f5f5;
+    font-size:2rem;
+    padding: 0.5rem 1.5rem;
+    margin-bottom:3rem;
+}
+#checkout-button i{
+    margin-left:1rem;
+}
+#checkout-button:hover{
+    cursor:pointer;
+    background-color:#990000;
+}
+
+.invalid-quantity-input{
+    border:4px solid #990000;
+}
+
+.invalid-quantity-stock{
+    color:#CC0000;
+}
+
+

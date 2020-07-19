@@ -1,0 +1,57 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.container{
+    width:70%;
+    margin: 2rem auto;
+    background-color:rgb(240, 240, 240);
+}
+
+#title{
+    padding:1rem 1rem;
+}
+
+.letter-nav{
+    display:flex;
+    justify-content:center;
+    margin-top:1.5rem;
+}
+
+.band-container{
+    border:1px solid lightgray;
+    padding:1rem 1rem;
+}
+
+.letter-link{
+    margin: 0 0.15rem;
+}
+.letter-link:hover{
+    cursor:pointer;
+}
+.letter-title{
+    border-bottom:2px solid lightgray;
+    margin-bottom:0.4rem;
+}
+
+.band-list{
+    border:1px solid rgb(221, 219, 219);
+    display:grid;
+    grid-template-columns: repeat(auto-fit,20%);
+    padding:2rem 1rem;
+    margin-bottom:1rem;
+}
+
+.band-name:hover{
+    cursor:pointer;
+}
+
+
+
+
+@media(max-width:900px){
+    .container{
+        width:100%;
+    }
+}

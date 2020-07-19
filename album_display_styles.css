@@ -1,0 +1,10 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.album-display-container{
+    width:80%;
+    margin:2rem auto;
+}
+

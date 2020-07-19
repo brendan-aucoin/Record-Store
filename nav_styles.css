@@ -1,0 +1,84 @@
+
+*{
+    margin:0;
+    padding:0;
+}
+/* the nav bar */
+.menu-bar{
+    height:2rem;
+    background:black;
+    color:white;
+    padding:1rem 1rem;
+    border-top:10px solid #DC143C;
+}
+
+.menu{
+    text-align:center;
+    line-height:2rem;
+    z-index:111;
+}
+
+
+.menu a{
+    color:white;
+    text-transform:uppercase;
+    text-decoration:none;
+    padding:0 1rem;
+}
+
+.show-menu-button, .hide-menu-button{
+    transition:0.4s;
+    font-size:2rem;
+    cursor:pointer;
+    display:none;
+    padding-right:1rem;
+}
+
+.show-menu-button{
+    float:right;
+}
+
+.menu a:hover,.show-menu-button:hover,.hide-menu-button:hover{
+    color:#DC143C;
+    transition: 0.4s;
+}
+
+#menu-burger{
+    position:absolute;
+    visibility:hidden;
+    z-index:-1111;
+}
+
+@media (max-width:800px){
+    .show-menu-button,.hide-menu-button{
+        display:block;
+    }
+
+    .hide-menu-button{
+        position:absolute;
+        top:1rem;
+        right:1.7rem;
+    }
+
+
+    .menu{
+        display:flex;
+        flex-direction:column;
+        justify-content:space-around;
+        left:0;
+        height:0%;
+        width:100%;
+        position:fixed;
+        background:black;
+        overflow-y:hidden;
+        transition:0.5s;
+        position:absolute;
+    }
+
+    .hide-menu-button{
+        position:absolute;
+        top:0;
+        right:1rem;
+    }
+
+}
