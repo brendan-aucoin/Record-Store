@@ -1,3 +1,4 @@
+// this file contains helper methods for the controllers to use
 const replaceSpaces = path =>{return path.replace(/ /g,"_");}
 const lowercase = str=>{return str.toLowerCase();}
 const albumCoverPath = (name,genre,pathPrefix = "") => {return `${pathPrefix}/img/album-covers/${lowercase(genre)}/${replaceSpaces(lowercase(name))}.jpg`;}
@@ -10,6 +11,7 @@ const compareByName = (a,b)=>{
     else if(nameA < nameB){return -1;}
     else{return 0;}
 }
+//export all the functions
 module.exports = {
     replaceSpaces,
     lowercase,

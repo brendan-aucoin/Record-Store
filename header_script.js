@@ -21,6 +21,11 @@ $(document).ready(function(){
     $("#search-submit-button").click(function(){
         alert("This feature is currently unnavailable");
     })
+
+    //click on the social media buttons
+    $("#facebook-button, #twitter-button, #youtube-button").click(function(){
+        window.location.href = "/under_construction";
+    });
     
 
 });

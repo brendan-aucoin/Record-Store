@@ -46,7 +46,11 @@
                     <p id = "price">$<%=product.price%></p>
                     <!-- the button will be grey if there is no stock left -->
                     <form>
-                        <button type = "submit" id = "add-to-cart-button" class = 
+                        <button type = "submit" id = "add-to-cart-button" 
+                            <%if(product.stock<=0){ %>
+                                disabled
+                            <%}%>
+                            class = 
                             <%
                             if(product.stock <=0){ %>"disabled-add-to-cart-button" <%}
                             else{ %> "add-to-cart-button" <% }%>>

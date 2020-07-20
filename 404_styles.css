@@ -1,0 +1,15 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.wrapper{
+    background-color: lightcoral;
+    display:flex;
+    justify-content:center;
+    height:100vh;
+}
+
+.wrapper h1{
+    margin-top:4rem;
+}

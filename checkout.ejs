@@ -1,8 +1,95 @@
 <html>
     <head>
+        <meta name = "author" content = "Brendan Aucoin">
+        <meta name="description" content="Record Store checkout">
+        <meta charset="UTF-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <title>Brendan's Record Store</title>
 
+        <!-- styles -->
+        <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/checkout_styles.css">
+               
+        <!-- scripts -->
+        <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script defer src = "/scripts/checkout_script.js"></script>
     </head>
     <body>
-        
+        <%- include('partials/header.ejs') %>
+        <%- include('partials/nav.ejs') %>
+        <div class="top-nav-bar">
+            <button id = "back-button" class = "back-to-cart-button"><i class="fa fa-arrow-left" aria-hidden="true"></i>Back</button>
+            <span class = "to-cart-span">to Cart</span>
+            <span class = "nav-bar-total-price">Total Due: $<%=totalPrice%></span>
+        </div>
+        <form id = "purchase-form" method = "POST" action = "/checkout" onsubmit = "return validate()";>
+            <div class="main-wrapper">
+                <div class="info-container">
+                    <h1>Enter your information</h1>
+                    <!-- the country -->
+                    <p>Country</p>
+                    <select class = "input" id = "countries">
+                        <option value = "Canada">Canada</option>
+                        <option value = "United States">United States</option>
+                        <option value = "England">England</option>
+                    </select>
+
+                    <!-- the name -->
+                    <p>Name</p>
+                    <input type = "text" class = "input" id = "name" placeholder = "Full Name" />
+
+                    <p>Address</p>
+                    <input type = "text" class = "input" id = "address" placeholder = "Street address" />
+                    
+                    
+                    <!-- input grid container -->
+                    <div class="input-grid-container">
+                        <div class="city-container">
+                            <p>City</p>
+                            <input type = "text" class = "input" id = "city"  />
+                        </div>
+
+                        <div class="province-container">
+                            <p>Province</p>
+                            <input type = "text" class = "input" id = "province" />
+                        </div>
+
+                        <div class="postal-code-container">
+                            <p>Postal Code</p>
+                            <input type = "text" class = "input" id = "postal-code" placeholder = "### ###" />
+                        </div>
+
+                        <div class="phone-container">
+                            <p>Phone</p>
+                            <input type = "text" class = "input" id = "phone-number" placeholder = "###-###-####" />
+                        </div>
+                    </div>
+                    <!-- end of the grid -->
+                    <h1>Payment information</h1>
+                    <input type = "text" class = "input" id = "credit-card-number" placeholder = "15 or 16 digits" />
+                    <div class="input-grid-container">
+                        <div class="expiration-date-container">
+                            <p>Expiration Date</p>
+                            <input type = "text" class = "input" id = "expiration-date" placeholder = "MM/YYYY"/>
+                        </div>
+                        <div class="card-security-code-container">
+                            <p>Card Security Code</p>
+                            <input type = "text" class = "input" id = "security-code" placeholder = "3 or 4 digits" />
+                        </div>
+                    </div>
+                    <!-- end of grid -->
+                    <p>Cardholder's Name</p>
+                    <input type = "text" class = "input" id = "cardholders-name" placeholder = "Name as it appears on card" />
+                    <br>
+                    <button type = "submit" id = "purchase-button">Purchase</button>
+                </div>
+                <!--end of the information section  -->
+                <div class="side-container">
+                    <div class="total-price-container">
+                        <span>Total Due: $<%=totalPrice%></span>
+                    </div>
+                </div>
+            </div>
+        </form>
     </body>
 </html>

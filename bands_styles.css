@@ -54,4 +54,11 @@
     .container{
         width:100%;
     }
+    
+}
+
+@media(max-width:720px){
+    .letter-nav{
+        font-size:0.8rem;
+    }
 }

@@ -33,11 +33,12 @@ $(document).ready(function(){
 
     $("#security-code").on("propertychange paste input",function(){validateSecurityCode($(this));});
 
-    //temp
-    $("#purchase-button").click(function(){
-        validate();
-        console.log(validate());
-    })
+    //if you click on the back button it goes back to the cart
+    $("#back-button").click(function(){
+        window.location.href = "/cart";
+    });
+
+    
     
 })
 
@@ -63,8 +64,8 @@ function validate(){
 
 // makes sure your postal code is in the form A1A 1A1
 function validatePostalCode(elem){
-    const regexSpace = /^[A-Z]\d[A-Z] \d[A-Z]\d$/;
-    const regexNoSpace = /^[A-Z]\d[A-Z]\d[A-Z]\d$/;
+    const regexSpace = /^[A-Za-z]\d[A-Za-z] \d[A-Za-z]\d$/;
+    const regexNoSpace = /^[A-Za-z]\d[A-Za-z]\d[A-Za-z]\d$/;
     const value = elem.val();
     return validateTextField(elem,
         [(value.match(regexSpace) || value.match(regexNoSpace))],

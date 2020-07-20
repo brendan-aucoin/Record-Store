@@ -18,10 +18,12 @@ app.set("view engine","ejs");
 app.use(express.static("./public"));
 app.use(cookieParser());
 app.use(session({secret: "Shopping cart",saveUninitialized:true,resave:true}));
+
 //set up the connection to the database
 const mongoosePath = "mongodb+srv://Brendan:test@recordstoredatabase-jpobe.mongodb.net/RecordStoreDatabase?retryWrites=true&w=majority";
 mongoose.connect(mongoosePath,{ useNewUrlParser: true,useUnifiedTopology: true });
 
+//the schema for the store
 let Schema = mongoose.Schema;
 
 let storeSchema = new Schema({
@@ -40,7 +42,9 @@ let StoreModel = mongoose.model("Store",storeSchema);
 //the middleware
 const urlencodedParser = bodyParser.urlencoded({extended:false});
 
+//call the controller for the store
 storeController(app,StoreModel,urlencodedParser);
 
+//start to listen to the port number 
 console.log(`listening to port: ${PORT}`);
 app.listen(PORT);
